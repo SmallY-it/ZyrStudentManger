@@ -12,7 +12,7 @@ import java.util.List;
 
 public class DatabasesImpl implements DatabasesInterface{
     @Override
-    public List getdata() throws SQLException {
+    public List getdata(String TeacherName) throws SQLException {
         JdbcUtil jdbcUtil= new JdbcUtil();
         Connection conn=jdbcUtil.GetConn();
         Statement statement=jdbcUtil.statement(conn);
@@ -28,7 +28,8 @@ public class DatabasesImpl implements DatabasesInterface{
              **/
             while (rs.next()){
                 int sign=rs.getInt("sign");
-                if (sign==0){
+                String T_name=rs.getString("TeacherName");
+                if (sign==0&&T_name.equals(TeacherName)){
                     int id= rs.getInt("id");
                     String username=rs.getString("username");
                     String sex=rs.getString("sex");
@@ -36,7 +37,7 @@ public class DatabasesImpl implements DatabasesInterface{
                     String experience=rs.getString("experience");
                     String score=rs.getString("score");
                     String classify=rs.getString("classify");
-                    StdentInfo stdentInfo=new StdentInfo(id,username,sex,city,experience,score,classify);
+                    StdentInfo stdentInfo=new StdentInfo(id,username,sex,city,experience,score,T_name,classify);
                     list.add(stdentInfo);
                 }else {
                     continue;

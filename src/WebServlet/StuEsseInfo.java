@@ -2,6 +2,7 @@ package WebServlet;
 
 import Model.StdentInfo;
 import Model.StudentMainInfo;
+import Model.Teacher;
 import Servlce.DatabasesImpl;
 import com.google.gson.Gson;
 
@@ -23,10 +24,11 @@ public class StuEsseInfo extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         response.setHeader("Access-Control-Allow-Origin","*");
         Gson gson=new Gson();
+        Teacher teacher= (Teacher) request.getSession().getAttribute("teacher");
         List list=new ArrayList<StdentInfo>();
 
         try {
-            list=databasesimpl.getdata();
+            list=databasesimpl.getdata(teacher.getName());
             StudentMainInfo studentmaininfo=new StudentMainInfo(0,"",100,list);
             String datas=gson.toJson(studentmaininfo);
             response.getWriter().print(datas);
@@ -71,7 +73,7 @@ public class StuEsseInfo extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println(returbmvalue);
+        //System.out.println(returbmvalue);
         if (returbmvalue){
             response.setStatus(200);
         }else {

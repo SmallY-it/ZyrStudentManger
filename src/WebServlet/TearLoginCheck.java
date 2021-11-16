@@ -42,6 +42,8 @@ public class TearLoginCheck extends HttpServlet {
                         //System.out.println(CkeackCode);
                         if (cheackcode.equals(CkeackCode)){
                             //response.getWriter().println("suecc!");
+                            request.getSession().setAttribute("teacher",teacher);
+                            //System.out.println(teacher.getName());
                             request.getRequestDispatcher("/index/index.jsp").forward(request,response);
                         }
                     }
