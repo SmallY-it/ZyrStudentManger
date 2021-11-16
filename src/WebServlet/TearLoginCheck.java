@@ -33,15 +33,16 @@ public class TearLoginCheck extends HttpServlet {
                 response.getWriter().println("用户名密码不存在！");
             }else {
                 if (Tearid.equals(teacher.getT_id())){
-                    System.out.println("工号");
+                    //System.out.println("工号");
                     if (Tpwd.equals(teacher.getPwd())){
-                        System.out.println("密码");
+                        //System.out.println("密码");
                         ServletContext context=this.getServletContext();
                         String CkeackCode= (String) context.getAttribute("checkcode");
-                        System.out.println("收到验证码："+CkeackCode);
-                        System.out.println(CkeackCode);
+                       // System.out.println("收到验证码："+CkeackCode);
+                        //System.out.println(CkeackCode);
                         if (cheackcode.equals(CkeackCode)){
-                            response.getWriter().println("suecc!");
+                            //response.getWriter().println("suecc!");
+                            request.getRequestDispatcher("/index/index.jsp").forward(request,response);
                         }
                     }
                 }
