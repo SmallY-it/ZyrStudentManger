@@ -37,7 +37,7 @@ public class DatabasesImpl implements DatabasesInterface{
                     String experience=rs.getString("experience");
                     String score=rs.getString("score");
                     String classify=rs.getString("classify");
-                    StdentInfo stdentInfo=new StdentInfo(id,username,sex,city,experience,score,T_name,classify);
+                    StdentInfo stdentInfo=new StdentInfo(id,username,sex,city,experience,score,classify,T_name);
                     list.add(stdentInfo);
                 }else {
                     continue;
