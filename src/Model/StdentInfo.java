@@ -8,18 +8,20 @@ public class StdentInfo {
     private String experience;
     private String score;
     private String classify;
+    private String TeacherName;
 
     public StdentInfo() {
         super();
     }
 
-    public StdentInfo(int id, String username, String sex, String city, String experience, String score, String classify) {
+    public StdentInfo(int id, String username, String sex, String city, String experience, String score, String classify,String TeacherName) {
         this.id = id;
         this.username = username;
         this.sex = sex;
         this.city = city;
         this.experience = experience;
         this.score = score;
+        this.TeacherName=TeacherName;
         this.classify = classify;
     }
 
@@ -92,6 +94,12 @@ public class StdentInfo {
         this.classify = classify;
     }
 
+    public String getTeacherName() {
+        return TeacherName;
+    }
 
+    public void setTeacherName(String teacherName) {
+        TeacherName = teacherName;
+    }
 }
 
