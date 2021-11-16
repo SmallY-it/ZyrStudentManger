@@ -37,15 +37,16 @@
 
 
             </ul>
+<%--            ${teacher.getImage_addr()}--%>
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item layui-hide layui-show-md-inline-block">
                     <a href="javascript:;">
-                        <img src=" " tppabs="http://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" class="layui-nav-img">
-                        杨绍张
+                        <img src="${teacher.getImage_addr()}"  class="layui-nav-img">
+                            ${teacher.getName()}
                     </a>
                     <dl class="layui-nav-child">
-                        <dd><a href="">我的信息</a></dd>
-                        <dd><a href="">退出登录</a></dd>
+                        <dd><a >我的信息</a></dd>
+                        <dd><a href="/LoginOut">退出登录</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
