@@ -45,7 +45,6 @@
                             ${teacher.getName()}
                     </a>
                     <dl class="layui-nav-child">
-                        <dd><a >我的信息</a></dd>
                         <dd><a href="/LoginOut">退出登录</a></dd>
                     </dl>
                 </li>
@@ -64,7 +63,7 @@
                     <li class="layui-nav-item layui-nav-itemed">
                         <a class="" href="javascript:;">学生信息管理</a>
                         <dl class="layui-nav-child">
-                            <dd><a onclick="mainbut()">基本信息</a></dd>
+                            <dd><a onclick="mainbut()">学生信息</a></dd>
                             <dd><a onclick="baidubut()">班级信息</a></dd>
                             <dd><a href="javascript:;">课程信息</a></dd>
                         </dl>
@@ -76,7 +75,7 @@
                             <dd><a href="javascript:;">专业课</a></dd>
                         </dl>
                     </li>
-                    <li class="layui-nav-item"><a href="javascript:;">公告</a></li>
+                    <li class="layui-nav-item"><a onclick="infos()">公告</a></li>
                 </ul>
             </div>
         </div>
@@ -125,6 +124,9 @@
         }
         function baidubut(){
             document.getElementById('kj').src="https://www.w3school.com.cn/tags/tag_map.asp";
+        }
+        function infos(){
+            document.getElementById('kj').src="../index/info.jsp";
         }
 
     </script>

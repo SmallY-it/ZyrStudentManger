@@ -49,9 +49,5 @@ public class StudentMainInfo {
         this.count = count;
     }
 
-    public static void main(String[] args) {
-        StdentInfo stdentInfo=new StdentInfo(10086,"杨绍张","男","云南保山","533022111101110123","2020","计算机科学与技术");
-        //Head head=new Head(,"",100,stdentInfo);
-        //System.out.println(head.toString());
-    }
+
 }

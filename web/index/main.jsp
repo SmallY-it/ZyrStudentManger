@@ -31,6 +31,7 @@
     <script type="text/html" id="addtoolbarDemo">
         <div class="layui-btn-container">
             <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
+            <button class="layui-btn layui-btn-sm" lay-event="flush">刷新</button>
         </div>
     </script>
     <script>
@@ -148,6 +149,22 @@
                     })
                 }
             });
+
+            table.on('toolbar(test)', function(obj){
+                var checkStatus = table.checkStatus(obj.config.id);
+                if(obj.event=="add"){
+                    //console.log("添加按钮")
+                    layer.open({
+                        title: '添加学生信息',
+                        type: 2,
+                        content: 'myinfo.jsp',
+                        area: ['530px', '100%']
+                    });
+                }else {
+                    location.reload();
+                }
+            });
+
         });
 
 

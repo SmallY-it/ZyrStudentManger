@@ -91,4 +91,20 @@ public class DatabasesImpl implements DatabasesInterface{
             return false;
         }
     }
+
+    @Override
+    public boolean addstudeninfo(String id,String username,String sex,String city,String experience,String score,String classify,String  TeacherName) throws SQLException {
+        JdbcUtil jdbcUtil= new JdbcUtil();
+        Connection conn=jdbcUtil.GetConn();
+        Statement statement=jdbcUtil.statement(conn);
+        String sql="INSERT INTO t_user VALUES (\""+id+"\", \""+username+"\", \""+sex+"\", \""+city+"\", \""+experience+"\", \""+score+"\", \""+classify+"\", \""+TeacherName+"\", 0);";
+        boolean rs = jdbcUtil.UpdataDb(conn, statement, sql);
+        if (rs) {
+            conn.close();
+            statement.close();
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
