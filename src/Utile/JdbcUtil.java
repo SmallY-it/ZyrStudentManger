@@ -3,7 +3,7 @@ package Utile;
 import java.sql.*;
 
 public class JdbcUtil {
-    private String dbUrl="jdbc:mysql://172.16.0.19:3306/Java_Test?useUnicode=true&characterEncoding=UTF-8";
+    private String dbUrl="jdbc:mysql://172.16.0.20:3306/Java_Test?useUnicode=true&characterEncoding=UTF-8";
     private String dbUserName="root";
     private String dbPassword="000000";
     private String jdbcName="com.mysql.jdbc.Driver";

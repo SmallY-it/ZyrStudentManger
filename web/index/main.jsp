@@ -24,13 +24,14 @@
     <script src="../static/dist/layui.js"></script>
     <script type="text/html" id="toolbarDemo">
         <div class="layui-btn-container">
-            <button class="layui-btn layui-btn-sm" lay-event="update">编辑</button>
+
             <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="delete">删除</button>
         </div>
     </script>
     <script type="text/html" id="addtoolbarDemo">
         <div class="layui-btn-container">
             <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
+            <button class="layui-btn layui-btn-sm" lay-event="update">编辑</button>
             <button class="layui-btn layui-btn-sm" lay-event="flush">刷新</button>
         </div>
     </script>
@@ -43,6 +44,7 @@
                 //toolbar:true,
                 toolbar: '#addtoolbarDemo' ,
                 elem: '#demo',
+                id: 'queryList',
                 height: 600,
                 // url: 'http://127.0.0.1:8000/api/test', //数据接口Python
                 url: '/MainData', //数据接口Java
@@ -78,7 +80,7 @@
                     }, {
                         field: 'experience',
                         title: '身份证号码',
-                        width: 160,
+                        width: 200,
                         edit:true,
                     }, {
                         field: 'score',
@@ -152,6 +154,7 @@
 
             table.on('toolbar(test)', function(obj){
                 var checkStatus = table.checkStatus(obj.config.id);
+
                 if(obj.event=="add"){
                     //console.log("添加按钮")
                     layer.open({
@@ -164,6 +167,18 @@
                     location.reload();
                 }
             });
+
+            table.on('row(test)',function (obj){
+                console.log(obj.data)
+
+                $.post("/UpdataServlet",{
+                    data:obj.data,
+                },function (data,status){
+
+                })
+            })
+
+
 
         });
 
