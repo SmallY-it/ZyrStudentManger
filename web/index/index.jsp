@@ -123,7 +123,7 @@
             document.getElementById('kj').src="../index/main.jsp";
         }
         function baidubut(){
-            document.getElementById('kj').src="https://www.w3school.com.cn/tags/tag_map.asp";
+            document.getElementById('kj').src="../index/class.jsp";
         }
         function infos(){
             document.getElementById('kj').src="../index/info.jsp";

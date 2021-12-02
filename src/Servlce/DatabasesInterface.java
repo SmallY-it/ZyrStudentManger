@@ -10,4 +10,5 @@ public interface DatabasesInterface {
     Teacher TeacherLogin(String T_id,String T_pwd) throws SQLException;
     boolean delete(String id, String username ,String experience) throws SQLException;
     boolean addstudeninfo(String id,String username,String sex,String city,String experience,String score,String classify,String  TeacherName) throws SQLException;
+    boolean updatestudeninfo(String id,String username,String sex,String city,String experience,String score,String classify,String  TeacherName) throws SQLException;
 }

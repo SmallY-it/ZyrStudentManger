@@ -33,6 +33,7 @@
             <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
             <button class="layui-btn layui-btn-sm" lay-event="update">编辑</button>
             <button class="layui-btn layui-btn-sm" lay-event="flush">刷新</button>
+<%--            <button class="layui-btn layui-btn-sm" lay-event="serach">搜索</button>--%>
         </div>
     </script>
     <script>
@@ -75,28 +76,28 @@
                         field: 'sex',
                         title: '性别',
                         width: 80,
-                        edit:true,
+
 
                     }, {
                         field: 'experience',
                         title: '身份证号码',
                         width: 200,
-                        edit:true,
+
                     }, {
                         field: 'score',
                         title: '年级',
                         width: 120,
-                        edit:true,
+
                     }, {
                         field: 'classify',
                         title: '班级',
                         width: 120,
-                        edit:true,
+
                     }, {
                         field: 'city',
                         title: '家庭住址',
                         width: 300,
-                        edit:true,
+
                     }, {
                         field: 'pro',
                         title: '操作',
@@ -106,13 +107,13 @@
                 ],
             });
             table.on('tool(test)', function(obj){
-                console.log(obj.data)
-                var data = obj.data.username; //获得当前行数据
-                console.log(data);
-                // var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
-                var tr = obj.data; //获得当前行 tr 的 DOM 对象（如果有的话）
-                //console.log(tr)
-                var layEvent = obj.event;
+                // console.log(obj.data)
+                 var data = obj.data.username; //获得当前行数据
+                // console.log(data);
+                 var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+                 var tr = obj.data; //获得当前行 tr 的 DOM 对象（如果有的话）
+                // console.log(tr)
+                 var layEvent = obj.event;
                 if(layEvent === 'delete'){ //删除
                     layer.confirm('确定删除:'+data+"同学吗！", function(index){
                         obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
@@ -132,26 +133,13 @@
                             }
                         })
                     });
-
-
-                } else if(layEvent === 'update'){ //编辑
-                    //do something
-
-                    //同步更新缓存对应的值
-                    layer.prompt({
-                        title: '请输入值',
-                        area: ['800px', '350px'],
-                        formType:2,
-                        value:tr.username,
-                    },function(value,index){
-                        obj.update({
-                            username:value,
-                        });
-                        layer.close(index);
-                    })
                 }
             });
 
+            table.on('row(test)',function (obj){
+                localStorage.setItem('objdate',JSON.stringify(obj.data))
+                //console.log(obj.data)
+            })
             table.on('toolbar(test)', function(obj){
                 var checkStatus = table.checkStatus(obj.config.id);
 
@@ -163,27 +151,22 @@
                         content: 'myinfo.jsp',
                         area: ['530px', '100%']
                     });
+                }else if (obj.event=="update"){
+                    //window.location.replace("updateinfo.jsp");
+                    layer.open({
+                        title: '修改学生信息',
+                        type: 2,
+                        content: 'updateinfo.jsp',
+                        area: ['530px', '100%']
+                    });
+                    //console.log("刷新")
                 }else {
+                    //页面刷新
                     location.reload();
                 }
             });
 
-            table.on('row(test)',function (obj){
-                console.log(obj.data)
-
-                $.post("/UpdataServlet",{
-                    data:obj.data,
-                },function (data,status){
-
-                })
-            })
-
-
-
         });
-
-
-
     </script>
 </body>
 </html>

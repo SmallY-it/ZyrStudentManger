@@ -52,6 +52,7 @@ public class JdbcUtil {
         }
     }
 
+
     public boolean UpdataDb(Connection connection,Statement statement ,String sql){
 
         try {
@@ -66,6 +67,8 @@ public class JdbcUtil {
             return false;
         }
     }
+
+
 
     public void closeLink(Connection connection ,ResultSet resultSet){
         if (connection !=null){

@@ -97,7 +97,14 @@ public class DatabasesImpl implements DatabasesInterface{
         JdbcUtil jdbcUtil= new JdbcUtil();
         Connection conn=jdbcUtil.GetConn();
         Statement statement=jdbcUtil.statement(conn);
-        String sql="INSERT INTO t_user VALUES (\""+id+"\", \""+username+"\", \""+sex+"\", \""+city+"\", \""+experience+"\", \""+score+"\", \""+classify+"\", \""+TeacherName+"\", 0);";
+        String sql="INSERT INTO t_user VALUES (\""+id+"\", " +
+                "\""+username+"\", " +
+                "\""+sex+"\", " +
+                "\""+city+"\", " +
+                "\""+experience+"\", " +
+                "\""+score+"\", " +
+                "\""+classify+"\"," +
+                " \""+TeacherName+"\", 0);";
         boolean rs = jdbcUtil.UpdataDb(conn, statement, sql);
         if (rs) {
             conn.close();
@@ -107,4 +114,34 @@ public class DatabasesImpl implements DatabasesInterface{
             return false;
         }
     }
+    @Override
+    public boolean updatestudeninfo(String id,String username,String sex,String city,String experience,String score,String classify,String  TeacherName) throws SQLException {
+        JdbcUtil jdbcUtil= new JdbcUtil();
+        Connection conn=jdbcUtil.GetConn();
+        Statement statement=jdbcUtil.statement(conn);
+        // UPDATE `Java_Test`.`t_user` SET `city` = '云南省保山市施甸县姚关镇富阳村委会', `experience` = '533022111101110124', `score` = '2019' WHERE `id` = 10087 AND `sign` = 1
+//        String sql="UPDATE `Java_Test`.`t_user` SET " +
+//                "`city` = '云南省保山市施甸县姚关镇富阳村委会', " +
+//                "`experience` = '533022111101110124'," +
+//                " `score` = '2019' " +
+//                "WHERE `id` = 10087;";
+
+        String sql="UPDATE t_user SET `city`=\""+city+"\",`sex`=\""+sex+"\",`experience`=\""+experience+"\",`classify`=\""+classify+"\" ,`score`=\""+score+"\" WHERE id=\""+id+"\" AND username=\""+username+"\" ;";
+        System.out.println(sql);
+        boolean rs = jdbcUtil.UpdataDb(conn, statement, sql);
+        if (rs) {
+            conn.close();
+            statement.close();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+//    public static void main(String[] args) throws SQLException {
+//        DatabasesImpl d=new DatabasesImpl();
+//        boolean a=d.updatestudeninfo("10099","林冲","男","yu","123456789","2016","计算机","ysz");
+//
+//
+//    }
 }
