@@ -22,8 +22,8 @@
 <%--    功能栏--%>
     <script type="text/html" id="addtoolbarDemo">
         <div class="layui-btn-container">
-            <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
-            <button class="layui-btn layui-btn-sm" lay-event="update">编辑</button>
+<%--            <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>--%>
+<%--            <button class="layui-btn layui-btn-sm" lay-event="update">编辑</button>--%>
             <button class="layui-btn layui-btn-sm" lay-event="flush">刷新</button>
 
         </div>
@@ -40,12 +40,19 @@
                 toolbar: '#addtoolbarDemo' ,
                 elem: '#demo'
                 ,height: 312
-                ,url: '../json/user.json/' //数据接口
-                ,page: true //开启分页
+                ,id: 'queryList'
+                ,url: '/ClassInfoServlet' //数据接口
+                ,response: {
+                    dataName: 'list'
+                },
+                    dataType: 'json'
+                // ,page: true //开启分页
                 ,cols: [[ //表头
-                    {field: 'className', title: '班级名字', width:180}
-                    ,{field: 'classTeacher', title: '班主任', width:180}
-                    ,{field: 'classyer', title: '隶属年级', width:180}
+                    {field: 'Id', title: 'id', width:180}
+                    ,{field: 'ClassName', title: '班级', width:180}
+                    ,{field: 'ClassTeacher', title: '班主任', width:180}
+                    ,{field: 'ClassYer', title: '隶属年级', width:180}
+                    ,{field: 'Class_size', title: '班级人数', width:180}
                 ]]
             });
 

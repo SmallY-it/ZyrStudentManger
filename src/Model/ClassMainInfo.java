@@ -1,32 +1,26 @@
 package Model;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentMainInfo {
+public class ClassMainInfo {
     private int code;
     private String msg;
     private int count;
-    private List<StdentInfo> list =new ArrayList<StdentInfo>();
-    public List<StdentInfo> getList() {
-        return list;
-    }
+    private List<ClassInfo> list = new ArrayList<>();
 
-
-    public void setList(List<StdentInfo> list) {
+    public void setList(List<ClassInfo> list) {
         this.list = list;
     }
 
-
-    public StudentMainInfo(int code, String msg, int count, List<StdentInfo> list) {
+    public ClassMainInfo(int code, String msg, int count, List<ClassInfo> list) {
         this.code = code;
         this.msg = msg;
         this.count = count;
         this.list = list;
     }
 
-    public int  getCode() {
+    public int getCode() {
         return code;
     }
 
@@ -49,6 +43,12 @@ public class StudentMainInfo {
     public void setCount(int count) {
         this.count = count;
     }
+
+    public List<ClassInfo> getList() {
+        return list;
+    }
+
+
 
 
 }

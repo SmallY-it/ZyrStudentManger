@@ -11,4 +11,5 @@ public interface DatabasesInterface {
     boolean delete(String id, String username ,String experience) throws SQLException;
     boolean addstudeninfo(String id,String username,String sex,String city,String experience,String score,String classify,String  TeacherName) throws SQLException;
     boolean updatestudeninfo(String id,String username,String sex,String city,String experience,String score,String classify,String  TeacherName) throws SQLException;
+    List getclassinfo(String classTeacher) throws SQLException;
 }

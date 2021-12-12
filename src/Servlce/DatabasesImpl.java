@@ -1,5 +1,6 @@
 package Servlce;
 
+import Model.ClassInfo;
 import Model.StdentInfo;
 import Model.Teacher;
 import Utile.JdbcUtil;
@@ -107,6 +108,7 @@ public class DatabasesImpl implements DatabasesInterface{
                 " \""+TeacherName+"\", 0);";
         boolean rs = jdbcUtil.UpdataDb(conn, statement, sql);
         if (rs) {
+//            更新改该班级人数
             conn.close();
             statement.close();
             return true;
@@ -119,13 +121,6 @@ public class DatabasesImpl implements DatabasesInterface{
         JdbcUtil jdbcUtil= new JdbcUtil();
         Connection conn=jdbcUtil.GetConn();
         Statement statement=jdbcUtil.statement(conn);
-        // UPDATE `Java_Test`.`t_user` SET `city` = '云南省保山市施甸县姚关镇富阳村委会', `experience` = '533022111101110124', `score` = '2019' WHERE `id` = 10087 AND `sign` = 1
-//        String sql="UPDATE `Java_Test`.`t_user` SET " +
-//                "`city` = '云南省保山市施甸县姚关镇富阳村委会', " +
-//                "`experience` = '533022111101110124'," +
-//                " `score` = '2019' " +
-//                "WHERE `id` = 10087;";
-
         String sql="UPDATE t_user SET `city`=\""+city+"\",`sex`=\""+sex+"\",`experience`=\""+experience+"\",`classify`=\""+classify+"\" ,`score`=\""+score+"\" WHERE id=\""+id+"\" AND username=\""+username+"\" ;";
         System.out.println(sql);
         boolean rs = jdbcUtil.UpdataDb(conn, statement, sql);
@@ -137,6 +132,34 @@ public class DatabasesImpl implements DatabasesInterface{
             return false;
         }
     }
+
+    @Override
+    public List getclassinfo(String classTeacher) throws SQLException {
+        List<ClassInfo> ClassList=new ArrayList<ClassInfo>();
+        JdbcUtil jdbcUtil= new JdbcUtil();
+        Connection conn=jdbcUtil.GetConn();
+        Statement statement=jdbcUtil.statement(conn);
+        String sql="select * from class;";
+        if (conn!=null){
+            ResultSet rs=jdbcUtil.SelectresultSet(conn,statement,sql);
+            while (rs.next()){
+                String ClassTear=rs.getString("classTeacher");
+                if (ClassTear.equals(classTeacher)){
+                    int Id=rs.getInt("id");
+                    String ClassName=rs.getString("className");
+                    String ClassTeacher=rs.getString("classTeacher");
+                    String ClassYer=rs.getString("classyer");
+                    int Class_size=rs.getInt("class_size");
+                    ClassInfo classInfo=new ClassInfo(Id,ClassName,classTeacher,ClassYer,Class_size);
+                    ClassList.add(classInfo);
+                }
+            }
+            return ClassList;
+        }else {
+            return null;
+        }
+    }
+
 
 //    public static void main(String[] args) throws SQLException {
 //        DatabasesImpl d=new DatabasesImpl();
