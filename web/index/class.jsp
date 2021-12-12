@@ -55,7 +55,6 @@
                     ,{field: 'Class_size', title: '班级人数', width:180}
                 ]]
             });
-
         });
     </script>
 </body>

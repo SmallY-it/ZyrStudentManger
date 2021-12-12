@@ -17,6 +17,11 @@ public class ClassInfoServlet extends HttpServlet {
     DatabasesImpl databasesimpl=new DatabasesImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //系统奔溃
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
         response.setHeader("Access-Control-Allow-Origin","*");
@@ -33,11 +38,5 @@ public class ClassInfoServlet extends HttpServlet {
             e.printStackTrace();
             return;
         }
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //doGet(request, response);
     }
 }
