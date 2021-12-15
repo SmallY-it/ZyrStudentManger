@@ -48,7 +48,7 @@
           <input type="text" name="cheackcode" style="width: 120px" required lay-verify="required"
                  placeholder="请输入验证码" autocomplete="off" class="layui-input">
         </div>
-        <div class="layui-form-mid layui-word-aux"><img id="scode" src="/Codeimg"
+        <div class="layui-form-mid layui-word-aux"><img id="scode" src="/checkimg"
                                                         style="margin-top: -10px;margin-left: -30px;  width: 120px; height: 30px;"></div>
       </div>
       <div class="layui-form-item">
@@ -61,8 +61,8 @@
   </div>
   <script>
     $("#scode").click(function (){
-      $.get("/Codeimg",function (data,status){
-        $('#scode').attr('src', "/Codeimg");
+      $.get("/checkimg",function (data,status){
+        $('#scode').attr('src', "/checkimg");
       })
     })
   </script>

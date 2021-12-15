@@ -18,6 +18,7 @@ public class ClassInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //系统奔溃
+        doPost(request, response);
     }
 
     @Override

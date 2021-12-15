@@ -17,7 +17,7 @@ import java.util.Random;
  *
  */
 
-@WebServlet(name="Codeimg",value = "/Codeimg")
+@WebServlet(name="checkimg",value = "/checkimg")
 public class DrawImage extends HttpServlet {
     private static final long serialVersionUID = 3038623696184546092L;
 
@@ -50,11 +50,11 @@ public class DrawImage extends HttpServlet {
         drawRandomLine(g);
         //6.写在图片上随机数
 //        String random = drawRandomNum((Graphics2D) g,"ch");//生成中文验证码图片
-//        String random = drawRandomNum((Graphics2D) g,"nl");//生成数字和字母组合的验证码图片
+        String random = drawRandomNum((Graphics2D) g,"nl");//生成数字和字母组合的验证码图片
 //        String random = drawRandomNum((Graphics2D) g,"n");//生成纯数字的验证码图片
 //        String random = drawRandomNum((Graphics2D) g,"l");//生成纯字母的验证码图片
 //        根据客户端传递的createTypeFlag标识生成验证码图片
-        String random = drawRandomNum((Graphics2D) g,createTypeFlag);
+        //String random = drawRandomNum((Graphics2D) g,createTypeFlag);
         //7.将随机数存在session中
         ServletContext context=this.getServletContext();
         context.setAttribute("checkcode", random);
